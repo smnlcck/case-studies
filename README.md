@@ -25,6 +25,7 @@ To edit copy, change the `<article class="case">` blocks in `index.html`. To swa
 
 - `index.html` — the section: markup, styles and the copy.
 - `js/case-studies.js` — mounts a figure into every `[data-figure]` stage and starts its loop.
+- `js/stack-reveal.js` — the scroll-stack reveal.
 - `js/figures/*.js` — the four illustrations.
 - `js/hairline-kernel.js` — the drawing engine the illustrations run on.
 
@@ -32,6 +33,12 @@ Each illustration panel is 4:3. The drawing inside keeps its own 5:4 frame and i
 custom properties on its stage: `--z` (zoom), and `--fx` / `--fy` (the point of the 400 × 320 drawing to centre).
 They were measured from each drawing's full extent through its loop, so nothing is clipped; raise `--z` to crop tighter.
 The pointer still lines up with the drawing at any size.
+
+## Scroll-stack reveal
+
+On wide screens the four cards sit in a deck pinned to the window. Scrolling slides the front card up and away, tipping back, while the cards behind move forward one place; the last card stays and the page scrolls on. It's the stack-scroll reveal from the Framer *Stack Scroll Reveal* project, rebuilt in `js/stack-reveal.js` with the same cards and illustrations.
+
+It turns itself off, leaving the stacked list, on screens under 881px wide, when the tallest card doesn't fit the window, and for visitors who ask for reduced motion. Tabbing to a link in a card behind the front one scrolls that card to the front. The pace and look are constants at the top of the file (`STEP`, `SHRINK`, `PEEK`, `TILT`).
 
 ## Styling
 
