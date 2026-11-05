@@ -133,6 +133,25 @@
     --hairline-plate: var(--panel);
   }
 
+  /* Scroll-stack reveal. Without JS, or until js/stack-reveal.js turns it on, the deck is the stacked list. */
+  .deck__cards { display: grid; gap: 32px; }
+  .deck.is-active .deck__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    display: grid;
+    align-items: center;
+  }
+  .deck.is-active .deck__cards { gap: 0; }
+  .deck.is-active .case {
+    grid-area: 1 / 1;
+    transform-origin: 50% 100%;
+    will-change: transform;
+    backface-visibility: hidden;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.035), 0 1px 2px rgb(0 0 0 / 0.04), 0 24px 48px -24px rgb(0 0 0 / 0.16);
+  }
+
   .sr-only {
     position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
     overflow: hidden; clip-path: inset(50%); white-space: nowrap;
@@ -141,6 +160,7 @@
   @media (max-width: 880px) {
     .case-studies { padding-block: 56px; }
     .case-studies__inner { gap: 20px; }
+    .deck__cards { gap: 20px; }
     .case { grid-template-columns: minmax(0, 1fr); padding: 24px; gap: 24px; border-radius: 22px; }
     .case__title { font-size: 23px; }
     .case__panel { border-radius: 16px; }
@@ -156,6 +176,12 @@
 <section class="case-studies" aria-labelledby="case-studies-heading">
   <div class="case-studies__inner">
     <h2 class="case-studies__heading" id="case-studies-heading">Case studies</h2>
+
+    <!-- The deck: on wide screens the cards are revealed one at a time as you scroll (js/stack-reveal.js);
+         elsewhere, or with reduced motion, they stay a stacked list. -->
+    <div class="deck" data-stack-reveal>
+    <div class="deck__sticky">
+    <div class="deck__cards">
 
     <article class="case">
       <div class="case__copy">
@@ -220,11 +246,16 @@
              aria-label="The Bohemian Football Club crest and wordmark, drawn in outline, turning from an isometric view to face the viewer."></div>
       </div>
     </article>
+
+    </div>
+    </div>
+    </div>
   </div>
 </section>
 
 <script src="js/hairline-kernel.js"></script>
 <script src="js/case-studies.js"></script>
+<script src="js/stack-reveal.js"></script>
 <script src="js/figures/flights.js"></script>
 <script src="js/figures/phone.js"></script>
 <script src="js/figures/accessibility.js"></script>
