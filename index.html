@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Studies · Simon Alcock</title>
+<meta name="description" content="Selected case studies by Simon Alcock, Senior Product Designer in Dublin: the Aer Lingus booking flow, conversion optimisation, accessibility compliance and Bohemian FC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap">
+<style>
+  /* Layout: a section heading over four stacked cards; each card is copy beside an
+     illustration panel, two equal columns that stack to one below 880px.
+     A deliberately light-only look, matching the Framer Case Study Card. */
+  :root {
+    color-scheme: light;
+    --page: #f3f3f3;
+    --surface: #ffffff;
+    --panel: #f3f3f3;
+    --ink: #2b2b2b;
+    --body: #4a4a4a;
+    --muted: #6e6e6e;
+    --accent: #d9303a;
+    --accent-hover: #c2262f;
+    --font: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --max: 1160px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--body);
+    font: 400 16px/1.55 var(--font);
+    -webkit-font-smoothing: antialiased;
+  }
+  .case-studies {
+    padding-block: 96px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .case-studies__inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: grid;
+    gap: 32px;
+  }
+  .case-studies__heading {
+    margin: 0 0 4px;
+    color: var(--ink);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .case {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    padding: 44px;
+    background: var(--surface);
+    border-radius: 28px;
+  }
+  .case__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    min-width: 0;
+  }
+  .case__eyebrow {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .case__title {
+    margin: -4px 0 0;
+    color: var(--ink);
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .case__body p { margin: 0; text-wrap: pretty; }
+  .case__body p + p { margin-top: 20px; }
+  .case__body strong { color: var(--ink); font-weight: 700; }
+  .case__body a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .case__body a:hover { color: var(--accent); }
+  .case__button {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    padding: 18px 38px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background-color 250ms cubic-bezier(.32, .72, 0, 1);
+  }
+  .case__button:hover { background: var(--accent-hover); }
+  a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+  .case__button:focus-visible { border-radius: 999px; }
+
+  /* The panel fills its grid cell; the stage inside keeps the figure's 5:4 frame, as large
+     as fits, so the pointer maps onto the drawing exactly. */
+  .case__panel {
+    position: relative;
+    min-height: 360px;
+    border-radius: 24px;
+    background: var(--panel);
+    overflow: hidden;
+    container-type: size;
+    display: grid;
+    place-items: center;
+  }
+  .case__stage {
+    width: 100%;
+    width: min(100cqw, 125cqh);
+    aspect-ratio: 5 / 4;
+    position: relative;
+    --hairline-plate: var(--panel);
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+
+  @media (max-width: 880px) {
+    .case-studies { padding-block: 56px; }
+    .case-studies__inner { gap: 20px; }
+    .case { grid-template-columns: minmax(0, 1fr); padding: 24px; gap: 24px; border-radius: 22px; }
+    .case__title { font-size: 23px; }
+    .case__panel { min-height: 0; aspect-ratio: 5 / 4; border-radius: 16px; }
+    .case__button { padding: 16px 32px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .case__button { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="case-studies" aria-labelledby="case-studies-heading">
+  <div class="case-studies__inner">
+    <h2 class="case-studies__heading" id="case-studies-heading">Case studies</h2>
+
+    <article class="case">
+      <div class="case__copy">
+        <p class="case__eyebrow">Case Study - Product design</p>
+        <h3 class="case__title">Redesigning the Aer Lingus booking flow</h3>
+        <div class="case__body">
+          <p>I’ve worked as a Product Designer at Aer Lingus since 2016. In that time I’ve delivered a broad range of large projects including full redesigns for rebrand, accessibility compliance and responsive web projects, as well as ongoing optimisation and BAU work.</p>
+          <p>I redesigned all 7 steps of the booking flow for the Aer Lingus website which takes <strong>over 3 million bookings annually and generates over 65% of business revenue.</strong></p>
+        </div>
+        <a class="case__button" href="https://simonalcock.ie/aer-lingus-booking-flow/">View Case Study<span class="sr-only">: Redesigning the Aer Lingus booking flow</span></a>
+      </div>
+      <div class="case__panel">
+        <div class="case__stage" data-figure="flights" data-hairline-theme="light" role="img"
+             aria-label="Isometric line drawing of a flight results page. A cursor moves over the fares, and the fare it points at lifts out of its card."></div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case__copy">
+        <p class="case__eyebrow">Case study - Designing for growth</p>
+        <h3 class="case__title">How my conversion optimisation projects increased revenue by €57 million</h3>
+        <div class="case__body">
+          <p>By understanding customer journeys and combining behavioural economics principles with design best practices, it is possible to dramatically improve conversion rates by shaping customers decision-making pathways.</p>
+          <p>My creative concepts for conversion optimisation projects have generated <strong>over €57 million of recurring additional revenue</strong>.</p>
+        </div>
+        <a class="case__button" href="https://simonalcock.ie/conversion-designer/">View Case Study<span class="sr-only">: How my conversion optimisation projects increased revenue by €57 million</span></a>
+      </div>
+      <div class="case__panel">
+        <div class="case__stage" data-figure="phone" data-hairline-theme="light" role="img"
+             aria-label="Isometric line drawing of three test screens, labelled Test 1, Test 2 and Test 3, stacked above a control phone. They close down into a single phone as the labels fade."></div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case__copy">
+        <p class="case__eyebrow">Case study - Designing for web accessibility</p>
+        <h3 class="case__title">Complying with U.S. accessibility legislation</h3>
+        <div class="case__body">
+          <p>U.S. accessibility legislation pre-dates the E.U. equivalent by almost 20 years. As an airline that travels to and from the United States, Aer Lingus has had to comply with <a href="https://www.transportation.gov/web-policies/508-compliance">U.S. Department of Transport accessibility standards</a> since 2017.</p>
+          <p>I’ve worked extensively on bringing design standards into compliance with <strong>W3C/WCAG accessibility standards since 2017</strong>.</p>
+        </div>
+        <a class="case__button" href="https://simonalcock.ie/accessibility-design/">View Case Study<span class="sr-only">: Complying with U.S. accessibility legislation</span></a>
+      </div>
+      <div class="case__panel">
+        <div class="case__stage" data-figure="accessibility" data-hairline-theme="light" role="img"
+             aria-label="Isometric line drawing of the accessibility symbol as a medallion on a turntable, inside a design-tool selection box that resizes as it spins."></div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case__copy">
+        <p class="case__eyebrow">Case study - Brand refresh, redesign and development</p>
+        <h3 class="case__title">Rebuilding Bohemian FC’s web presence</h3>
+        <div class="case__body">
+          <p>Founded in 1890, Bohemian FC are the oldest football club in continuous existence in Ireland. During the financial crisis, Bohemians almost went out of business and needed to rely on the goodwill of volunteers, supporters and community members to survive.</p>
+          <p>I completely rebuilt The Bohemian FC web presence on a voluntary basis, helping the club to now boast <strong>the highest commercial/merchandise income in the League of Ireland.</strong></p>
+        </div>
+        <a class="case__button" href="https://simonalcock.ie/portfolio/bohemianfc/">View Case Study<span class="sr-only">: Rebuilding Bohemian FC’s web presence</span></a>
+      </div>
+      <div class="case__panel">
+        <div class="case__stage" data-figure="bohs" data-hairline-theme="light" role="img"
+             aria-label="The Bohemian Football Club crest and wordmark, drawn in outline, turning from an isometric view to face the viewer."></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<script src="js/hairline-kernel.js"></script>
+<script src="js/case-studies.js"></script>
+<script src="js/figures/flights.js"></script>
+<script src="js/figures/phone.js"></script>
+<script src="js/figures/accessibility.js"></script>
+<script src="js/figures/bohs.js"></script>
+</body>
+</html>
