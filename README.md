@@ -28,7 +28,10 @@ To edit copy, change the `<article class="case">` blocks in `index.html`. To swa
 - `js/figures/*.js` — the four illustrations.
 - `js/hairline-kernel.js` — the drawing engine the illustrations run on.
 
-Each stage keeps the figures' 5:4 frame, centred in its panel, so the pointer lines up with the drawing at any size.
+Each illustration panel is 4:3. The drawing inside keeps its own 5:4 frame and is zoomed and centred with three
+custom properties on its stage: `--z` (zoom), and `--fx` / `--fy` (the point of the 400 × 320 drawing to centre).
+They were measured from each drawing's full extent through its loop, so nothing is clipped; raise `--z` to crop tighter.
+The pointer still lines up with the drawing at any size.
 
 ## Styling
 

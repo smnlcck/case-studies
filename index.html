@@ -111,23 +111,25 @@
   a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
   .case__button:focus-visible { border-radius: 999px; }
 
-  /* The panel fills its grid cell; the stage inside keeps the figure's 5:4 frame, as large
-     as fits, so the pointer maps onto the drawing exactly. */
+  /* The panel is 4:3. Inside it the stage keeps the figures' 5:4 frame, zoomed by --z and
+     centred on the point (--fx, --fy) of the 400 x 320 drawing, both measured from each
+     figure's full extent through its loop so nothing is clipped. The panel crops the rest.
+     The engine maps the pointer from the stage's on-screen box, so hover stays exact. */
   .case__panel {
     position: relative;
-    min-height: 360px;
+    align-self: center;
+    aspect-ratio: 4 / 3;
     border-radius: 24px;
     background: var(--panel);
     overflow: hidden;
     container-type: size;
-    display: grid;
-    place-items: center;
   }
   .case__stage {
-    width: 100%;
-    width: min(100cqw, 125cqh);
+    position: absolute;
+    width: calc(100cqw * var(--z, 1));
     aspect-ratio: 5 / 4;
-    position: relative;
+    left: calc(50cqw - 100cqw * var(--z, 1) * var(--fx, 200) / 400);
+    top: calc(50cqh - 80cqw * var(--z, 1) * var(--fy, 160) / 320);
     --hairline-plate: var(--panel);
   }
 
@@ -141,7 +143,7 @@
     .case-studies__inner { gap: 20px; }
     .case { grid-template-columns: minmax(0, 1fr); padding: 24px; gap: 24px; border-radius: 22px; }
     .case__title { font-size: 23px; }
-    .case__panel { min-height: 0; aspect-ratio: 5 / 4; border-radius: 16px; }
+    .case__panel { border-radius: 16px; }
     .case__button { padding: 16px 32px; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -166,7 +168,7 @@
         <a class="case__button" href="https://simonalcock.ie/aer-lingus-booking-flow/">View Case Study<span class="sr-only">: Redesigning the Aer Lingus booking flow</span></a>
       </div>
       <div class="case__panel">
-        <div class="case__stage" data-figure="flights" data-hairline-theme="light" role="img"
+        <div class="case__stage" data-figure="flights" data-hairline-theme="light" style="--z: 1.13; --fx: 200; --fy: 176" role="img"
              aria-label="Isometric line drawing of a flight results page. A cursor moves over the fares, and the fare it points at lifts out of its card."></div>
       </div>
     </article>
@@ -182,7 +184,7 @@
         <a class="case__button" href="https://simonalcock.ie/conversion-designer/">View Case Study<span class="sr-only">: How my conversion optimisation projects increased revenue by €57 million</span></a>
       </div>
       <div class="case__panel">
-        <div class="case__stage" data-figure="phone" data-hairline-theme="light" role="img"
+        <div class="case__stage" data-figure="phone" data-hairline-theme="light" style="--z: 1.18; --fx: 194.8; --fy: 171.2" role="img"
              aria-label="Isometric line drawing of three test screens, labelled Test 1, Test 2 and Test 3, stacked above a control phone. They close down into a single phone as the labels fade."></div>
       </div>
     </article>
@@ -198,7 +200,7 @@
         <a class="case__button" href="https://simonalcock.ie/accessibility-design/">View Case Study<span class="sr-only">: Complying with U.S. accessibility legislation</span></a>
       </div>
       <div class="case__panel">
-        <div class="case__stage" data-figure="accessibility" data-hairline-theme="light" role="img"
+        <div class="case__stage" data-figure="accessibility" data-hairline-theme="light" style="--z: 1.07; --fx: 200; --fy: 152.6" role="img"
              aria-label="Isometric line drawing of the accessibility symbol as a medallion on a turntable, inside a design-tool selection box that resizes as it spins."></div>
       </div>
     </article>
@@ -214,7 +216,7 @@
         <a class="case__button" href="https://simonalcock.ie/portfolio/bohemianfc/">View Case Study<span class="sr-only">: Rebuilding Bohemian FC’s web presence</span></a>
       </div>
       <div class="case__panel">
-        <div class="case__stage" data-figure="bohs" data-hairline-theme="light" role="img"
+        <div class="case__stage" data-figure="bohs" data-hairline-theme="light" style="--z: 1; --fx: 195.8; --fy: 165.4" role="img"
              aria-label="The Bohemian Football Club crest and wordmark, drawn in outline, turning from an isometric view to face the viewer."></div>
       </div>
     </article>
