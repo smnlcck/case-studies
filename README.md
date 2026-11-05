@@ -42,7 +42,7 @@ It turns itself off, leaving the stacked list, on screens under 881px wide, when
 
 ## Styling
 
-Matches the **Case Study Card** component in the Framer project *Case Study Component*: white cards with a 28px radius on a light grey page, a light grey illustration panel and a red pill button. Colours are custom properties at the top of the `<style>` block in `index.html`.
+Matches the **Case Study Card** component in the Framer project *Case Study Component*: white cards with a 28px radius on a light grey page, a white illustration panel and a red pill button. Colours are custom properties at the top of the `<style>` block in `index.html`.
 
 Type is **Plus Jakarta Sans** from Google Fonts, standing in for Eudoxus Sans, which the current site uses. To switch, self-host Eudoxus Sans and change `--font`.
 
