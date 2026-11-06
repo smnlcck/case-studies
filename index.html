@@ -14,7 +14,7 @@
      A deliberately light-only look, matching the Framer Case Study Card. */
   :root {
     color-scheme: light;
-    --page: #f3f3f3;
+    --page: #f4f4f6;            /* hero --frame */
     --surface: #ffffff;
     --panel: #ffffff;
     /* Type and colour tokens shared with hero-hero-existing and learning-learning-existing */
@@ -26,8 +26,8 @@
     --ink: var(--title);
     --body: var(--text);
     --muted: var(--tab-text);
-    --accent: #d9303a;
-    --accent-hover: #c2262f;
+    --accent: #333333;          /* hero --title: monochrome button */
+    --accent-hover: #1f1f1f;    /* hero --ink */
     --max: 1160px;
   }
   * { box-sizing: border-box; }
@@ -96,7 +96,7 @@
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
   }
-  .case__body a:hover { color: var(--accent); }
+  .case__body a:hover { text-decoration-thickness: 2px; }
   .case__button {
     margin-top: 12px;
     display: inline-flex;
