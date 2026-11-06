@@ -44,7 +44,7 @@ It turns itself off, leaving the stacked list, on screens under 881px wide, when
 
 Matches the **Case Study Card** component in the Framer project *Case Study Component*: white cards with a 28px radius on a light grey page, a white illustration panel and a red pill button. Colours are custom properties at the top of the `<style>` block in `index.html`.
 
-Type is **Plus Jakarta Sans** from Google Fonts, standing in for Eudoxus Sans, which the current site uses. To switch, self-host Eudoxus Sans and change `--font`.
+Type and colour tokens match `hero-hero-existing` and `learning-learning-existing`: **Eudoxus Sans Medium** for headings, labels and the button, **Helvetica** for body copy, with #333 titles, rgb(80,80,80) body and #666 secondary text. Eudoxus is licensed, so it loads from simonalcock.ie rather than living in this repo. Browsers only allow that if simonalcock.ie sends an `Access-Control-Allow-Origin` header for its font files; without it, the text falls back to Helvetica.
 
 ## Credits
 
